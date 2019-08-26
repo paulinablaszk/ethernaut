@@ -1,10 +1,8 @@
 pragma solidity ^0.5.0;
 
-
 interface Building {
-  function isLastFloor(uint) external returns (bool);
+  function isLastFloor(uint) external view returns (bool);
 }
-
 
 contract Elevator {
   bool public top;
